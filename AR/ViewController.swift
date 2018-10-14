@@ -20,25 +20,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        
         //radius = 모서리 10cm 10cm 10cm
         let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-        
-        //color red assign
+       
+        let sphere = SCNSphere(radius: 0.2)
+        // color red assign
+        // 지오메트리 표면의 모양을 정의하는 음영 속성의 집합
         let material  =  SCNMaterial()
         
-        material.diffuse.contents = UIColor.red
+//        material.diffuse.contents = UIColor.red
+        material.diffuse.contents = UIImage(named: "art.scnassets/river.jpeg")
         
-        cube.materials = [material]
+        sphere.materials = [material]
         
         //point 3d space
+        //3D 좌표 공간에서 위치와 변형을 나태내는 장면 그래프의 구조
         let node = SCNNode()
         
+        //3 성분 벡터의 표현
         node.position = SCNVector3(0, 0.1, -0.5)
         
         //object display assign
-        node.geometry = cube
-        
+        node.geometry = sphere
         
         sceneView.scene.rootNode.addChildNode(node)
         sceneView.autoenablesDefaultLighting = true
