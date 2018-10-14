@@ -20,14 +20,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        //radius = 모서리 10cm 10cm 10cm
+        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        //color red assign
+        let material  =  SCNMaterial()
+        
+        material.diffuse.contents = UIColor.red
+        
+        cube.materials = [material]
+        
+        //point 3d space
+        let node = SCNNode()
+        
+        node.position = SCNVector3(0, 0.1, -0.5)
+        
+        //object display assign
+        node.geometry = cube
+        
+        
+        sceneView.scene.rootNode.addChildNode(node)
+        sceneView.autoenablesDefaultLighting = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +51,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
 
+        print(ARWorldTrackingConfiguration.isSupported)
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
