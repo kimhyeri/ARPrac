@@ -17,8 +17,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         // Set the view's delegate
-//        sceneView.delegate = self
+        sceneView.delegate = self
 //
 //        //radius = 모서리 10cm 10cm 10cm
 //        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
@@ -46,25 +47,59 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        sceneView.scene.rootNode.addChildNode(node)
 //        sceneView.autoenablesDefaultLighting = true
         
-        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-            diceNode.position = SCNVector3(0, 0, -0.1)
-            sceneView.scene.rootNode.addChildNode(diceNode)
-        }
+//        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+//        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+//            diceNode.position = SCNVector3(0, 0, -0.1)
+//            sceneView.scene.rootNode.addChildNode(diceNode)
+//        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let configuration: ARConfiguration
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         
-        if ARWorldTrackingConfiguration.isSupported {
-            configuration = ARWorldTrackingConfiguration()
-        } else {
-           configuration = AROrientationTrackingConfiguration()
-        }
-      
+//        if ARWorldTrackingConfiguration.isSupported {
+//            let configuration = ARWorldTrackingConfiguration()
+//            configuration.planeDetection = .horizontal
+//        }
+//        else {
+//           configuration = AROrientationTrackingConfiguration()
+//        }
+        
         sceneView.session.run(configuration)
+    }
+    
+    //anchor : 타일
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if anchor is ARPlaneAnchor {
+            let planeAnchor = anchor as! ARPlaneAnchor
+            
+            //conver dimension anchor
+            //dont put y at with
+            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+            
+            let planeNode = SCNNode()
+            
+            planeNode.position = SCNVector3(planeAnchor.center.x, 0, planeAnchor.center.x)
+            
+            //rotate 90 degree
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+            
+            let gridMaterial = SCNMaterial()
+            
+            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+            
+            plane.materials = [gridMaterial]
+            
+            planeNode.geometry = plane
+            
+            node.addChildNode(planeNode)
+            
+        } else {
+            return
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
