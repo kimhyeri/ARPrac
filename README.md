@@ -28,3 +28,9 @@ SceneKit, SpriteKit, Metal 사용
 ARWorldTrackingConfiguration  
 ARConfiguration
 
+#### ARKit 2에서 새롭게 등장한 기능  
+얼굴 표정 추적 개선
+사실적인 렌더링  
+3D 물체 감지  
+지속적인 경험  
+경험 공유  
