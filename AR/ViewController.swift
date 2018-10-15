@@ -14,6 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    var diceArray = [SCNNode]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +46,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        node.geometry = sphere
 //
 //        sceneView.scene.rootNode.addChildNode(node)
-//        sceneView.autoenablesDefaultLighting = true
+        sceneView.autoenablesDefaultLighting = true
         
 //        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
 //        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
@@ -107,5 +108,52 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    func rollAll() {
+        if !diceArray.isEmpty {
+            for dice in diceArray {
+                roll(dice: dice)
+            }
+        }
+    }
+    
+    func roll(dice: SCNNode){
+        
+        let randoX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        
+        let randoZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        
+        dice.runAction(SCNAction.rotateBy(x: CGFloat(randoX * 5), y: 0, z:CGFloat( randoZ * 5), duration: 0.5))
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let touchLocation = touch.location(in: sceneView)
+            //2d to 3d
+            let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
+            
+            if let hitReuslt = results.first {
+                print(hitReuslt)
+                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    diceNode.position = SCNVector3(hitReuslt.worldTransform.columns.3.x, hitReuslt.worldTransform.columns.3.y + diceNode.boundingSphere.radius, hitReuslt.worldTransform.columns.3.z)
+                    
+                    diceArray.append(diceNode)
+                    sceneView.scene.rootNode.addChildNode(diceNode)
+                    
+                    roll(dice: diceNode)
+                
+                }
+            }
+        }
+    }
+    @IBAction func buttonPressed(_ sender: Any) {
+        
+        rollAll()
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        rollAll()
     }
 }
