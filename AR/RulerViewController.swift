@@ -15,6 +15,7 @@ class RulerViewController: UIViewController , ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     var dotNodes = [SCNNode]()
+    var textNode = SCNNode()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,15 @@ class RulerViewController: UIViewController , ARSCNViewDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        //측정할 점이 2개이상일땐 앞에 삭제함.
+        if dotNodes.count >= 2 {
+            for dot in dotNodes {
+                dot.removeFromParentNode()
+            }
+            dotNodes = [SCNNode]()
+        }
+        
         
         //set ui touch
         if let touchLocation = touches.first?.location(in: sceneView) {
@@ -93,11 +103,13 @@ class RulerViewController: UIViewController , ARSCNViewDelegate {
     
     func updateText(text: String, at: SCNVector3) {
         
+        textNode.removeFromParentNode()
+        
         let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
         
         textGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         
-        let textNode = SCNNode(geometry: textGeometry)
+        textNode = SCNNode(geometry: textGeometry)
         
         textNode.position = SCNVector3(at.x , at.y  + 0.01, at.z )
         
