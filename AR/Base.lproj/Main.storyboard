@@ -28,6 +28,14 @@
                                     <action selector="buttonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="F2z-kk-GHY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnX-UH-WhV">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="removeButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="iUk-Zu-YJW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -46,6 +54,30 @@
             </objects>
             <point key="canvasLocation" x="1366" y="96"/>
         </scene>
+        <!--Ruler View Controller-->
+        <scene sceneID="Hxa-dO-qMd">
+            <objects>
+                <viewController id="ao5-fR-y3P" customClass="RulerViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JES-AB-d2J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4h-6D-AB8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zZW-8X-WlR"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="u4h-6D-AB8" id="rlp-aY-XQg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7nO-fb-c9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="-566.26686656671666"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="h3C-xL-vTX">
             <objects>
@@ -59,6 +91,14 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" id="gb8-fQ-YJD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xq-BV-6LH">
+                                <rect key="frame" x="164" y="172" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="ao5-fR-y3P" kind="show" id="IG4-c7-fXy"/>
                                 </connections>
                             </button>
                         </subviews>

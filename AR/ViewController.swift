@@ -134,26 +134,47 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
             
             if let hitReuslt = results.first {
-                print(hitReuslt)
-                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-                if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                    diceNode.position = SCNVector3(hitReuslt.worldTransform.columns.3.x, hitReuslt.worldTransform.columns.3.y + diceNode.boundingSphere.radius, hitReuslt.worldTransform.columns.3.z)
-                    
-                    diceArray.append(diceNode)
-                    sceneView.scene.rootNode.addChildNode(diceNode)
-                    
-                    roll(dice: diceNode)
-                
-                }
+                addDice(location: hitReuslt)
             }
         }
     }
+    
+    func addDice(location: ARHitTestResult) {
+        
+        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+        
+        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+            
+            diceNode.position = SCNVector3(
+                location.worldTransform.columns.3.x,
+                location.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                location.worldTransform.columns.3.z
+            )
+            
+            diceArray.append(diceNode)
+            sceneView.scene.rootNode.addChildNode(diceNode)
+            
+            roll(dice: diceNode)
+            
+        }
+    }
+    
     @IBAction func buttonPressed(_ sender: Any) {
         
         rollAll()
     }
     
+    @IBAction func removeButtonPressed(_ sender: UIButton) {
+        
+        if !diceArray.isEmpty {
+            for i in diceArray {
+                i.removeFromParentNode()
+            }
+        }
+    }
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         rollAll()
     }
+
+
 }
