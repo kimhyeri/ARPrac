@@ -84,9 +84,28 @@ class RulerViewController: UIViewController , ARSCNViewDelegate {
         //절대값 distance never get negative
         print(abs(distance))
         
+        //rendering 3d text
+        updateText(text: "\(abs(distance))" , at: end.position)
+        
+        
         
     }
     
+    func updateText(text: String, at: SCNVector3) {
+        
+        let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
+        
+        textGeometry.firstMaterial?.diffuse.contents = UIColor.blue
+        
+        let textNode = SCNNode(geometry: textGeometry)
+        
+        textNode.position = SCNVector3(at.x , at.y  + 0.01, at.z )
+        
+        //1percent original size
+        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        
+        sceneView.scene.rootNode.addChildNode(textNode)
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
