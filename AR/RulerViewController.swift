@@ -88,14 +88,14 @@ class RulerViewController: UIViewController , ARSCNViewDelegate {
         
         //거리 구하기 double = pow
         let distance = sqrt(
-            pow(a, 2) + pow(b,2 ) + pow(c,2)
+            pow(a, 2) + pow(b, 2) + pow(c, 2)
         )
         
         //절대값 distance never get negative
-        print(abs(distance))
-        
+        print(abs(distance) * 100)
+        let textValue = Int(abs(distance) * 100)
         //rendering 3d text
-        updateText(text: "\(abs(distance))" , at: end.position)
+        updateText(text: String(textValue) , at: end.position)
         
         
         
@@ -105,7 +105,7 @@ class RulerViewController: UIViewController , ARSCNViewDelegate {
         
         textNode.removeFromParentNode()
         
-        let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
+        let textGeometry = SCNText(string: "\(text) cm", extrusionDepth: 1.0)
         
         textGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         
