@@ -10,7 +10,7 @@ introducing ARKit
 증강현실은 인공적인 환경을 만들어 내지는 않지만 기존의 환경과 함께 할 수 있으며 그것위에 특징을 오버레이 할 수 있습니다.   
 Augmented reality does not create artificial environment, but it can play with the existing environment and also overlays feature on it. 
 
-### 개념
+## 개념
 - SceneKit  
 : Create 3D games and add 3D content to apps using high-level scene descriptions. Easily add animations, physics simulation, particle effects, and realistic physically based rendering.
 Language
@@ -18,6 +18,24 @@ Language
 : Create 2D sprite-based games using an optimized animation system, physics simulation, and event-handling support.
 - metal  
 : Render advanced 3D graphics and perform data-parallel computations using graphics processors.
+
+## ARKit2 추가된 사항
+
+1. 끊김 없는 AR 경험
+: 이제 세션 간에 끊김 없는 AR 경험을 제공하고 이후에 다시 실행될 수 있다. 사용자는 테이블에서 AR 퍼즐을 시작하고 이후에 동일한 상태로 돌아오거나 , 매번 처음부터 다시 시작하지 않고 여러 날에 걸쳐 인테리어 꾸미기 프로젝트를 진행할 수 있습니다.
+
+2. 함께하는 AR 경험
+: 더 이상 AR 앱에서 AR 경험에 참여할 수 있는 사람이 1명 또는 기기1대로 제한되지 않습니다. 여러 사용자가 각자의 iOS 기기를 사용해 AR 경험을 동시에 보거나 멀티플레이어 게임을 즐길 수 있게 되었다. 또한 여러 명이 플레이하는 AR 게임을 주변 사람들이 관전할 수도 있다.
+
+3. 물체 인식 및 추적
+: ARKit 1.5에서는 2D 이미지 인식 기능이 추가되어 포스터, 아트워크, 표지판과 같은 2D 이지미를 기반으로 AR경험을 구현할 수 있었다. ARKit2에서는 이 기능을 확장해 완전한 2D 이미지 추적을 지원하므로 제품 상자나 잡지처럼 이동 가능한 사물을 AR 경험 속으로 가져올 수 있다. 또한 ARKit2에서는 조각품, 장난감, 가구와 같은 알려진 3D 물체를 감지할 수 있는 기능도 추가되었다.
+
+### ARKit 2에서 새롭게 등장한 기능  
+얼굴 표정 추적 개선
+사실적인 렌더링  
+3D 물체 감지  
+지속적인 경험  
+경험 공유  
 
 ### 목표
 * World Tracking  
@@ -29,47 +47,20 @@ Language
 ### 렌더링  
 SceneKit, SpriteKit, Metal 사용
 
-###
-ARWorldTrackingConfiguration  
-ARConfiguration
-
-#### ARKit 2에서 새롭게 등장한 기능  
-얼굴 표정 추적 개선
-사실적인 렌더링  
-3D 물체 감지  
-지속적인 경험  
-경험 공유  
-
-#### Required
-*A9 chip
-*devices 
-*SE, 6S (plus), 7 (plus) , pro , 9.7-inch ipad ++
-
-### BUT 
-베터리가 많이 소모되는 단점이 존재
-
-
-#### 사용되는 앱
-인스타그램 스냅챗 포켓몬고 이케아 등
-
-#### 링크 
-https://developer.apple.com/kr/arkit/
-
-#### ARKit프로젝트 생성시 달라지는 점 
+### ARKit프로젝트 생성시 달라지는 점 
 
 1) art scnassets 
 = it’s seperate from Asset.xcassets
 
 2) ViewController변화
-= import SceneKit
-= import ARKit
-= IBOutlet ARSCNView
-= ARSCNViewDelegate implement (delegate = self)
-= session did fail, session interrupted, interrupted Ended
-= showStatistic
-:frame per second, timing information
+* import SceneKit
+* import ARKit
+* IBOutlet ARSCNView
+* ARSCNViewDelegate implement (delegate = self)
+* session did fail, session interrupted, interrupted Ended
+* showStatistic
 
-#### Configuration 비교 
+### Configuration 비교 하기
 
 ARWorldTrackingConfiguraion
 : 실제로 존재하는것 처럼 포지션 유지 
@@ -79,8 +70,7 @@ ARConfiguration
 : 포지션 유지 안됨
 : A8 chip에서 가능함
 
-#### 사용가능한 configuration 확인할 때
-
+* 사용가능한 configuration 확인할 때
 ```
 if ARWorldTrackingConfiguration.isSupported {
    configuration = ARWorldTrackingConfiguration()
@@ -90,20 +80,18 @@ else  {
 } 
 ```
 
-####
-* SCNBox
-면이 모두 직사각형 인 6면 다각형 기하학.
+#### Required
+*A9 chip
+*devices 
+*SE, 6S (plus), 7 (plus) , pro , 9.7-inch ipad ++
 
-* SCNMaterial
-렌더링 될 때 지오메트리 표면의 모양을 정의하는 음영 속성 집합
-diffuse ) 라이팅에 대한 응답 관리하는 오브젝트 
+### 단점
+베터리가 많이 소모되는 단점이 존재
 
-* SCNNode
-기하 도형, 조명 카메라 등 내용을 첨부 할 수 있는 3D 좌표 공간에서 위치와 변형을 나타내는 장면 그래프 구조 요소
+#### 사용되는 앱
+인스타그램 스냅챗 포켓몬고 이케아 등
 
-* ARHitTest
-카메라의 스팟을 잡아 실제 표면에 대한 정보를 얻을 수 있다.
+#### 링크 
+https://developer.apple.com/kr/arkit/
 
-* ARanchor 
-AR이 실제 위치 방향
 
