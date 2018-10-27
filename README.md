@@ -2,22 +2,26 @@
 Get to know 'ARKit'
 
 ## AR - augmented reality
-introducing ARKit
->
-:iOS 11 introduces ARKit, a new framework that allows you to easily create unparalleled augmented reality experience for iphone and ipad. By blending digital objects and information with the environment around you. ARKit takes apps beyond the screen, freeing them to interact with the real world in entirely new ways.
+
+> iOS 11 introduces ARKit, a new framework that allows you to easily create unparalleled augmented reality experience for iphone and ipad. By blending digital objects and information with the environment around you. ARKit takes apps beyond the screen, freeing them to interact with the real world in entirely new ways.
 
 ## Why 'AR' is important?
-증강현실은 인공적인 환경을 만들어 내지는 않지만 기존의 환경과 함께 할 수 있으며 그것위에 특징을 오버레이 할 수 있습니다.   
-Augmented reality does not create artificial environment, but it can play with the existing environment and also overlays feature on it. 
+> Augmented reality does not create artificial environment, but it can play with the existing environment and also overlays feature on it. 
 
-## 개념
-- SceneKit  
+
+## Content technology
+> rendering 
+
+-SceneKit  
 : Create 3D games and add 3D content to apps using high-level scene descriptions. Easily add animations, physics simulation, particle effects, and realistic physically based rendering.
-Language
-- SpriteKit  
+
+-SpriteKit  
 : Create 2D sprite-based games using an optimized animation system, physics simulation, and event-handling support.
-- metal  
+
+-Metal    
 : Render advanced 3D graphics and perform data-parallel computations using graphics processors.
+
+* * *
 
 ## ARKit2 추가된 사항
 
@@ -31,21 +35,18 @@ Language
 : ARKit 1.5에서는 2D 이미지 인식 기능이 추가되어 포스터, 아트워크, 표지판과 같은 2D 이지미를 기반으로 AR경험을 구현할 수 있었다. ARKit2에서는 이 기능을 확장해 완전한 2D 이미지 추적을 지원하므로 제품 상자나 잡지처럼 이동 가능한 사물을 AR 경험 속으로 가져올 수 있다. 또한 ARKit2에서는 조각품, 장난감, 가구와 같은 알려진 3D 물체를 감지할 수 있는 기능도 추가되었다.
 
 ### ARKit 2에서 새롭게 등장한 기능  
-얼굴 표정 추적 개선
-사실적인 렌더링  
-3D 물체 감지  
-지속적인 경험  
-경험 공유  
+1)얼굴 표정 추적 개선  
+2)사실적인 렌더링  
+3)3D 물체 감지  
+4)지속적인 경험  
+5)경험 공유  
 
-### 목표
+### 사용
 * World Tracking  
 * World Sharing  
 * Image/Object Detection  
 * Face Tracking  
 * Real-World Positions 등  
-
-### 렌더링  
-SceneKit, SpriteKit, Metal 사용
 
 ### ARKit프로젝트 생성시 달라지는 점 
 
@@ -80,7 +81,8 @@ else  {
 } 
 ```
 
-#### Required
+### 요구사항
+
 *A9 chip
 *devices 
 *SE, 6S (plus), 7 (plus) , pro , 9.7-inch ipad ++
@@ -88,10 +90,15 @@ else  {
 ### 단점
 베터리가 많이 소모되는 단점이 존재
 
-#### 사용되는 앱
-인스타그램 스냅챗 포켓몬고 이케아 등
+### 사용되는 앱
+인스타그램   
+스냅챗  
+포켓몬고  
+이케아 등
 
-#### 링크 
-https://developer.apple.com/kr/arkit/
-
+#### ARkit 프레임워크 공부
+ > <https://github.com/kimhyeri/ARPrac/blob/develop/AR/ARkitFramework.md>
+ 
+#### 개발자 공식 문서 링크 
+ > <https://developer.apple.com/kr/arkit/>
 
