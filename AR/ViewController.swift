@@ -15,38 +15,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     var diceArray = [SCNNode]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        
         // Set the view's delegate
         sceneView.delegate = self
-//
-//        //radius = 모서리 10cm 10cm 10cm
-//        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-//
-//        let sphere = SCNSphere(radius: 0.2)
-        // color red assign
-        // 지오메트리 표면의 모양을 정의하는 음영 속성의 집합
-//        let material  =  SCNMaterial()
-//
-////        material.diffuse.contents = UIColor.red
-//        material.diffuse.contents = UIImage(named: "art.scnassets/river.jpeg")
-//
-//        sphere.materials = [material]
-//
-//        //point 3d space
-//        //3D 좌표 공간에서 위치와 변형을 나태내는 장면 그래프의 구조
-//        let node = SCNNode()
-//
-//        //3 성분 벡터의 표현
-//        node.position = SCNVector3(0, 0.1, -0.5)
-//
-//        //object display assign
-//        node.geometry = sphere
-//
-//        sceneView.scene.rootNode.addChildNode(node)
-        sceneView.autoenablesDefaultLighting = true
+
         
 //        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
 //        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
@@ -58,17 +35,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
+        
+        let configuration  = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         
 //        if ARWorldTrackingConfiguration.isSupported {
-//            let configuration = ARWorldTrackingConfiguration()
+//            configuration = ARWorldTrackingConfiguration()
 //            configuration.planeDetection = .horizontal
 //        }
 //        else {
-//           configuration = AROrientationTrackingConfiguration()
+//            configuration = AROrientationTrackingConfiguration()
 //        }
-        
+//
         sceneView.session.run(configuration)
     }
     
@@ -78,7 +56,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let planeAnchor = anchor as! ARPlaneAnchor
             
             //conver dimension anchor
-            //dont put y at with
+            //dont put y at width
             let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
             
             let planeNode = SCNNode()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1JQ-ja-TE5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qia-d7-3zo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="96"/>
+            <point key="canvasLocation" x="2321" y="96"/>
         </scene>
         <!--Ruler View Controller-->
         <scene sceneID="Hxa-dO-qMd">
@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nO-fb-c9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="-566.26686656671666"/>
+            <point key="canvasLocation" x="3006" y="96"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="h3C-xL-vTX">
@@ -101,6 +101,14 @@
                                     <segue destination="ao5-fR-y3P" kind="show" id="IG4-c7-fXy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgK-Z5-kGW">
+                                <rect key="frame" x="264" y="520" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="T7i-Vg-nI5" kind="show" id="WU0-Se-vRU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -109,10 +117,58 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="no8-9r-JL2"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VEK-KJ-LNJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRl-Cf-5J0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="96"/>
+            <point key="canvasLocation" x="1599.2" y="95.802098950524751"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RO4-Hn-6l5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qia-d7-3zo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Ap-DH-PPE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1JQ-ja-TE5" kind="relationship" relationship="rootViewController" id="a6t-vN-mVi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n99-aL-nSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="96"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fMN-Gj-qkJ">
+            <objects>
+                <viewController id="T7i-Vg-nI5" customClass="ARViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3lM-98-wg6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-Pw-c7q">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0C1-1s-BDB" firstAttribute="trailing" secondItem="nWn-Pw-c7q" secondAttribute="trailing" id="DS0-dc-cAo"/>
+                            <constraint firstItem="nWn-Pw-c7q" firstAttribute="leading" secondItem="0C1-1s-BDB" secondAttribute="leading" id="aYg-h9-lHM"/>
+                            <constraint firstItem="nWn-Pw-c7q" firstAttribute="top" secondItem="0C1-1s-BDB" secondAttribute="top" id="g73-B8-oA9"/>
+                            <constraint firstItem="0C1-1s-BDB" firstAttribute="bottom" secondItem="nWn-Pw-c7q" secondAttribute="bottom" id="iyj-eG-pgi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0C1-1s-BDB"/>
+                    </view>
+                    <connections>
+                        <outlet property="ARSCNView" destination="nWn-Pw-c7q" id="nTn-Wz-kXn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bv4-dZ-U3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2321" y="754"/>
         </scene>
     </scenes>
 </document>
