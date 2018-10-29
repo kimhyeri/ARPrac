@@ -14,6 +14,8 @@ class BallViewController: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
     
+    var currentNode : SCNNode!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +50,22 @@ class BallViewController: UIViewController {
         sceneView.session.run(configuration)
     }
     
+    
+    @IBAction func startHorizontalAction(_ sender: Any) {
+
+        horizontalAction(node: currentNode)
+    }
+    
+    @IBAction func stopAllAction(_ sender: Any) {
+    
+        currentNode.removeAllActions()
+    }
+    
+    @IBAction func startRoundAction(_ sender: Any) {
+    
+        roundAction(node: currentNode)
+    }
+
 }
 
 extension BallViewController : ARSCNViewDelegate {
@@ -150,8 +168,25 @@ extension BallViewController : ARSCNViewDelegate {
         backNode.physicsBody = physicsBody
         
         sceneView.scene.rootNode.addChildNode(backNode)
+                
+        currentNode = backNode
         
-        horizontalAction(node: backNode)
     }
 
+    
+    func roundAction(node: SCNNode) {
+        
+        let upLeft = SCNAction.move(by: SCNVector3(1, 1, 0), duration: 2)
+        
+        let downRight = SCNAction.move(by: SCNVector3(1, -1, 0), duration: 2)
+        
+        let downLeft = SCNAction.move(by: SCNVector3(-1, -1, 0), duration: 2)
+        
+        let upRight = SCNAction.move(by: SCNVector3(-1, 1, 0), duration: 2)
+        
+        let actionSequence = SCNAction.sequence([upLeft,downLeft,downRight,upRight])
+        
+        node.runAction(SCNAction.repeat(actionSequence, count: 2))
+
+    }
 }
