@@ -76,9 +76,57 @@ extension BallViewController : ARSCNViewDelegate {
         
         let cameraTransform = centerPoint.transform
         let cameraLocation = SCNVector3(cameraTransform.m41, cameraTransform.m42, cameraTransform.m43)
-        let cameraOrientation = SCNVector3(cameraTransform.m31, cameraTransform.m32, cameraTransform.m33)
+        
+        // camera orientation opposite
+        let cameraOrientation = SCNVector3(-cameraTransform.m31, -cameraTransform.m32, -cameraTransform.m33)
         
         let cameraPostion = SCNVector3Make(cameraLocation.x + cameraOrientation.x, cameraLocation.y + cameraOrientation.y, cameraLocation.z + cameraOrientation.z)
+        
+        
+        //create geometry
+        //create material
+        
+        let basketball = SCNSphere(radius: 0.15)
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "basketballSkin.png")
+        basketball.materials = [material]
+        
+        
+        let ballNode = SCNNode(geometry: basketball)
+        ballNode.position = cameraPostion
+        
+        //create physicsShape and physicsBody
+        
+        let physicsShape = SCNPhysicsShape(node: ballNode, options: nil)
+        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
+        
+        ballNode.physicsBody = physicsBody
+        
+        let forceVector: Float = 6
+        
+        ballNode.physicsBody?.applyForce(SCNVector3Make(cameraPostion.x * forceVector, cameraPostion.y * forceVector, cameraPostion.z * forceVector), asImpulse: true)
+        
+        
+        sceneView.scene.rootNode.addChildNode(ballNode)
+        
+        
+    }
+    
+    func horizontalAction(node: SCNNode) {
+        
+        //1m to the left and right
+        
+        let leftAction = SCNAction.move(by: SCNVector3(-1, 0, 0), duration: 3)
+        
+        let rightAction = SCNAction.move(by: SCNVector3(1, 0, 0), duration: 3)
+        
+        //create sequence
+        
+        let actionSequence = SCNAction.sequence([leftAction,rightAction])
+        
+        //run action
+        node.runAction(SCNAction.repeat(actionSequence, count: 2))
         
         
     }
@@ -94,8 +142,16 @@ extension BallViewController : ARSCNViewDelegate {
         
         backNode.position = SCNVector3(0, 0.5, -3)
         
+        let physicsShape = SCNPhysicsShape(node: backNode, options: [SCNPhysicsShape.Option.type: SCNPhysicsShape.ShapeType.concavePolyhedron])
+        
+        //static body ( do not move)
+        let physicsBody = SCNPhysicsBody(type: .static, shape: physicsShape)
+        
+        backNode.physicsBody = physicsBody
+        
         sceneView.scene.rootNode.addChildNode(backNode)
         
+        horizontalAction(node: backNode)
     }
 
 }
