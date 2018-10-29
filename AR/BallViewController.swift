@@ -13,6 +13,7 @@ import UIKit
 class BallViewController: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var addHoopButton: UIButton!
     
     var currentNode : SCNNode!
     
@@ -26,9 +27,7 @@ class BallViewController: UIViewController {
         let scene = SCNScene()
         
         sceneView.scene = scene
-        
-        addBack()
-        
+                
         registerGestureRecognizer()
     }
     
@@ -66,6 +65,14 @@ class BallViewController: UIViewController {
         roundAction(node: currentNode)
     }
 
+    @IBAction func addHoop(_ sender: Any) {
+        
+        addBack()
+        addHoopButton.isHidden = true
+        
+        
+    }
+    
 }
 
 extension BallViewController : ARSCNViewDelegate {
