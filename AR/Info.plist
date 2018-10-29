@@ -31,6 +31,8 @@
 		<string>armv7</string>
 		<string>arkit</string>
 	</array>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Need to save photos</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>

@@ -102,11 +102,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgK-Z5-kGW">
-                                <rect key="frame" x="264" y="520" width="46" height="30"/>
+                                <rect key="frame" x="164" y="421" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="T7i-Vg-nI5" kind="show" id="WU0-Se-vRU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAG-5G-dVn">
+                                <rect key="frame" x="164" y="498" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="CGT-5D-yut" kind="show" id="jlw-xe-ml4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,6 +130,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRl-Cf-5J0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1599.2" y="95.802098950524751"/>
+        </scene>
+        <!--Ball View Controller-->
+        <scene sceneID="fXe-0l-kR3">
+            <objects>
+                <viewController id="CGT-5D-yut" customClass="BallViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DDv-1o-uuA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpR-GH-x6b">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XOl-sn-INc" firstAttribute="trailing" secondItem="EpR-GH-x6b" secondAttribute="trailing" id="4l1-ch-1Ki"/>
+                            <constraint firstItem="EpR-GH-x6b" firstAttribute="top" secondItem="XOl-sn-INc" secondAttribute="top" id="Ebr-if-YJ3"/>
+                            <constraint firstItem="EpR-GH-x6b" firstAttribute="leading" secondItem="XOl-sn-INc" secondAttribute="leading" id="ZE1-Yg-c3r"/>
+                            <constraint firstItem="XOl-sn-INc" firstAttribute="bottom" secondItem="EpR-GH-x6b" secondAttribute="bottom" id="q3F-Zz-HJi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XOl-sn-INc"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="EpR-GH-x6b" id="27o-41-9XB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kv0-Ff-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1599" y="779"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RO4-Hn-6l5">
@@ -152,6 +189,14 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-Pw-c7q">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4i-O8-y3L">
+                                <rect key="frame" x="164" y="586" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="captureButtonPressed:" destination="T7i-Vg-nI5" eventType="touchUpInside" id="znQ-im-Rmx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
