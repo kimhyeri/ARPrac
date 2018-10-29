@@ -73,10 +73,12 @@ extension BallViewController : ARSCNViewDelegate {
         }
         
         //transform matric
-        //the orientation
-        //the location fo camera
         
+        let cameraTransform = centerPoint.transform
+        let cameraLocation = SCNVector3(cameraTransform.m41, cameraTransform.m42, cameraTransform.m43)
+        let cameraOrientation = SCNVector3(cameraTransform.m31, cameraTransform.m32, cameraTransform.m33)
         
+        let cameraPostion = SCNVector3Make(cameraLocation.x + cameraOrientation.x, cameraLocation.y + cameraOrientation.y, cameraLocation.z + cameraOrientation.z)
         
         
     }
