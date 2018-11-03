@@ -14,6 +14,7 @@
 		356DA47E2173609E00AA39C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356DA47C2173609E00AA39C3 /* Main.storyboard */; };
 		356DA480217360A400AA39C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356DA47F217360A400AA39C3 /* Assets.xcassets */; };
 		356DA483217360A400AA39C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356DA481217360A400AA39C3 /* LaunchScreen.storyboard */; };
+		357B54192189F21900B4EF95 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357B54182189F21900B4EF95 /* DetailViewController.swift */; };
 		35A064FB217CDEFF00AA0B41 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */; };
 		35E3B35B218764EB001DB903 /* BallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3B35A218764EB001DB903 /* BallViewController.swift */; };
 		35E3B35D21877A8F001DB903 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3B35C21877A8F001DB903 /* CustomButton.swift */; };
@@ -29,6 +30,7 @@
 		356DA47F217360A400AA39C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		356DA482217360A400AA39C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		356DA484217360A400AA39C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		357B54182189F21900B4EF95 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerViewController.swift; sourceTree = "<group>"; };
 		35E3B35A218764EB001DB903 /* BallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallViewController.swift; sourceTree = "<group>"; };
 		35E3B35C21877A8F001DB903 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				355004F221831F36005C6FF7 /* ARViewController.swift */,
 				35E3B35A218764EB001DB903 /* BallViewController.swift */,
 				35E3B35C21877A8F001DB903 /* CustomButton.swift */,
+				357B54182189F21900B4EF95 /* DetailViewController.swift */,
 				356DA47C2173609E00AA39C3 /* Main.storyboard */,
 				356DA4782173609E00AA39C3 /* art.scnassets */,
 				356DA47F217360A400AA39C3 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 				356DA4772173609E00AA39C3 /* AppDelegate.swift in Sources */,
 				355004F321831F36005C6FF7 /* ARViewController.swift in Sources */,
 				35E3B35B218764EB001DB903 /* BallViewController.swift in Sources */,
+				357B54192189F21900B4EF95 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
