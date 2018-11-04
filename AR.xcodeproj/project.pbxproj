@@ -16,6 +16,7 @@
 		356DA483217360A400AA39C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356DA481217360A400AA39C3 /* LaunchScreen.storyboard */; };
 		357B54192189F21900B4EF95 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357B54182189F21900B4EF95 /* DetailViewController.swift */; };
 		35A064FB217CDEFF00AA0B41 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */; };
+		35D42B10218D790100C982F8 /* MultiPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D42B0F218D790100C982F8 /* MultiPeer.swift */; };
 		35E3B35B218764EB001DB903 /* BallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3B35A218764EB001DB903 /* BallViewController.swift */; };
 		35E3B35D21877A8F001DB903 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3B35C21877A8F001DB903 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		356DA484217360A400AA39C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		357B54182189F21900B4EF95 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerViewController.swift; sourceTree = "<group>"; };
+		35D42B0F218D790100C982F8 /* MultiPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPeer.swift; sourceTree = "<group>"; };
 		35E3B35A218764EB001DB903 /* BallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallViewController.swift; sourceTree = "<group>"; };
 		35E3B35C21877A8F001DB903 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				35E3B35A218764EB001DB903 /* BallViewController.swift */,
 				35E3B35C21877A8F001DB903 /* CustomButton.swift */,
 				357B54182189F21900B4EF95 /* DetailViewController.swift */,
+				35D42B0F218D790100C982F8 /* MultiPeer.swift */,
 				356DA47C2173609E00AA39C3 /* Main.storyboard */,
 				356DA4782173609E00AA39C3 /* art.scnassets */,
 				356DA47F217360A400AA39C3 /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35A064FB217CDEFF00AA0B41 /* RulerViewController.swift in Sources */,
+				35D42B10218D790100C982F8 /* MultiPeer.swift in Sources */,
 				356DA47B2173609E00AA39C3 /* ViewController.swift in Sources */,
 				35E3B35D21877A8F001DB903 /* CustomButton.swift in Sources */,
 				356DA4772173609E00AA39C3 /* AppDelegate.swift in Sources */,
