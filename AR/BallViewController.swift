@@ -15,7 +15,7 @@ class BallViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var addHoopButton: UIButton!
     
-    var currentNode : SCNNode!
+    private var currentNode : SCNNode!
     
     override func viewDidLoad() {
         super.viewDidLoad()

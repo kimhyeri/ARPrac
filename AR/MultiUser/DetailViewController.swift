@@ -11,18 +11,19 @@ import ARKit
 import SceneKit
 import MultipeerConnectivity
 
-class DetailViewController: UIViewController , ARSCNViewDelegate, ARSessionDelegate{
+class DetailViewController: UIViewController , ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet weak var SCNView: ARSCNView!
     
-    var multipeerSession: MultipeerSession!
-    var textNode = SCNNode()
+    private var multipeerSession: MultipeerSession!
+    private var textNode = SCNNode()
+    private var mapProvider: MCPeerID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setNaviButton()
     }
-
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -32,6 +33,7 @@ class DetailViewController: UIViewController , ARSCNViewDelegate, ARSessionDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         multipeerSession = MultipeerSession(receivedDataHandler: receivedData)
 
         guard ARWorldTrackingConfiguration.isSupported else {
@@ -41,22 +43,20 @@ class DetailViewController: UIViewController , ARSCNViewDelegate, ARSessionDeleg
         let configuration  = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         
-    
-        
-        // Set a delegate to track the number of plane anchors for providing UI feedback.
         SCNView.session.delegate = self
         
         SCNView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-        // Prevent the screen from being dimmed after a while as users will likely
-        // have long periods of interaction without touching the screen or buttons.
+
         UIApplication.shared.isIdleTimerDisabled = true
         SCNView.session.run(configuration)
 
-        
     }
+    
+    //MARK: - Update view
+    
+    // tap gesture
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        //set ui touch
         if let touchLocation = touches.first?.location(in: SCNView) {
             
             let hitTestResult = SCNView.hitTest(touchLocation, types: .featurePoint)
@@ -66,29 +66,49 @@ class DetailViewController: UIViewController , ARSCNViewDelegate, ARSessionDeleg
                 
             }
         }
-        
     }
     
-    
+    func setNaviButton() {
+        let rightBarButtonItem = UIBarButtonItem.init(title: "전송", style: .done, target: self, action: #selector(DetailViewController.sendData))
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+
     func updateText(text: String, at: ARHitTestResult) {
         
         let textGeometry = SCNText(string: "\(text)", extrusionDepth: 1.0)
-        
         textGeometry.firstMaterial?.diffuse.contents = UIColor.blue
-        
         textNode = SCNNode(geometry: textGeometry)
-        
         textNode.position = SCNVector3(at.worldTransform.columns.3.x , at.worldTransform.columns.3.y, at.worldTransform.columns.3.z)
-        
-        //1percent original size
         textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        
         SCNView.scene.rootNode.addChildNode(textNode)
     }
     
+}
 
-    var mapProvider: MCPeerID?
 
+//MARK: Seding data to peers
+
+extension DetailViewController {
+    
+    @objc func sendData() {
+        print("sending data")
+        
+        SCNView.session.getCurrentWorldMap { worldMap, error in
+            guard let map = worldMap
+                else { print("Error: \(error!.localizedDescription)"); return }
+            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true)
+                else { fatalError("can't encode map") }
+            self.multipeerSession.sendToAllPeers(data)
+        }
+        
+    }
+    
+}
+
+//MARK: Recieve data from peers
+// Recieve and relocalize to the shared map
+
+extension DetailViewController {
     func receivedData(_ data: Data, from peer: MCPeerID) {
         
         do {

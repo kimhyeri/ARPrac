@@ -10,6 +10,7 @@ import MultipeerConnectivity
 
 /// - Tag: MultipeerSession
 class MultipeerSession: NSObject {
+    
     static let serviceType = "ar-multi-sample"
     
     private let myPeerID = MCPeerID(displayName: UIDevice.current.name)
@@ -20,6 +21,7 @@ class MultipeerSession: NSObject {
     private let receivedDataHandler: (Data, MCPeerID) -> Void
     
     /// - Tag: MultipeerSetup
+    
     init(receivedDataHandler: @escaping (Data, MCPeerID) -> Void ) {
         self.receivedDataHandler = receivedDataHandler
         
@@ -97,3 +99,13 @@ extension MultipeerSession: MCNearbyServiceAdvertiserDelegate {
     }
     
 }
+
+
+/*
+
+ Connect to Peer Devices
+ multipeerSession 인스턴스가 생성되고 MCNearbyServiesAdvetiser
+ MCNearbyServiceBrowser로 가능한 기기를 찾는다.
+ 
+ */
+

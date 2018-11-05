@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		354F127021900B0B00D0EB0D /* MultiUser */ = {
+			isa = PBXGroup;
+			children = (
+				357B54182189F21900B4EF95 /* DetailViewController.swift */,
+				35D42B0F218D790100C982F8 /* MultiPeer.swift */,
+			);
+			path = MultiUser;
+			sourceTree = "<group>";
+		};
 		356DA46A2173609E00AA39C3 = {
 			isa = PBXGroup;
 			children = (
@@ -68,15 +77,14 @@
 		356DA4752173609E00AA39C3 /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				356DA4762173609E00AA39C3 /* AppDelegate.swift */,
+				354F127021900B0B00D0EB0D /* MultiUser */,
 				356DA47A2173609E00AA39C3 /* ViewController.swift */,
 				35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */,
 				355004F221831F36005C6FF7 /* ARViewController.swift */,
 				35E3B35A218764EB001DB903 /* BallViewController.swift */,
 				35E3B35C21877A8F001DB903 /* CustomButton.swift */,
-				357B54182189F21900B4EF95 /* DetailViewController.swift */,
-				35D42B0F218D790100C982F8 /* MultiPeer.swift */,
 				356DA47C2173609E00AA39C3 /* Main.storyboard */,
+				356DA4762173609E00AA39C3 /* AppDelegate.swift */,
 				356DA4782173609E00AA39C3 /* art.scnassets */,
 				356DA47F217360A400AA39C3 /* Assets.xcassets */,
 				356DA481217360A400AA39C3 /* LaunchScreen.storyboard */,
