@@ -27,3 +27,15 @@
 * Session은 사용자의 로컬 환경 또는 사용자 이동에 따라 언제든지 ARCamera.TrackingState.limited(_:) 상태를 추적할 수 있음. 
 
 * 연관된 ARCamera.TrackingState.Reason값을 사용하여 추적 상태가 ARCamera.TrackingState.normal로 돌아갈 수 있도록 사용자를 안내해 상황을 해결하도록 피드백을 제공해라.
+
+***
+
+## 3. 중단된 session에서 복구
+> ARKit은 실행중인 ARSession없이 디바이스의 포즈를 추적할 수 없음.  
+기본적으로 session이 중단 되는 경우 - 다른 앱으로 전환. 
+
+* sessionShouldAttemptRelocalization (_ :)메소드에서 true를 반환하면 ARKit는 중단전의 유저 환경에 대한 지식을 현재 카메라 및 센서 데이터와 맞추려함.   이 과정에서 추적 상태는 ARCamera.TrackingState.limited (_ :)임. 
+성공하면 짧은 시간 후 ARCamera.TrackingState.normal로 변경.
+
+- limited가 성공하려면 session이 중단되었을때의 위치 및 방향으로 되돌려야 함. (만약 그러지 않으면 계속 그 상태로 유지.)
+
