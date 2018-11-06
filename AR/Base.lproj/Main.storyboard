@@ -78,6 +78,35 @@
             </objects>
             <point key="canvasLocation" x="2754" y="-162"/>
         </scene>
+        <!--Persistence View Controller-->
+        <scene sceneID="OUN-ZQ-Qa7">
+            <objects>
+                <viewController id="AC8-Lw-3Zk" customClass="PersistenceViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zfw-wz-N4k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-I2-fiA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eth-WQ-BTx" firstAttribute="trailing" secondItem="hcw-I2-fiA" secondAttribute="trailing" id="JNN-xq-L0l"/>
+                            <constraint firstItem="hcw-I2-fiA" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" id="Lkn-LR-OKC"/>
+                            <constraint firstItem="eth-WQ-BTx" firstAttribute="bottom" secondItem="hcw-I2-fiA" secondAttribute="bottom" id="hPF-fV-Z7m"/>
+                            <constraint firstItem="hcw-I2-fiA" firstAttribute="leading" secondItem="eth-WQ-BTx" secondAttribute="leading" id="ptw-Ty-kiB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eth-WQ-BTx"/>
+                    </view>
+                    <connections>
+                        <outlet property="SCNView" destination="hcw-I2-fiA" id="thK-S8-gzz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4vR-Y2-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="-745"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="KRW-GA-5uv">
             <objects>
@@ -152,6 +181,14 @@
                                 <state key="normal" title="Multi User"/>
                                 <connections>
                                     <segue destination="pHw-gi-6kc" kind="show" id="Syw-Dp-Zca"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-AJ-lCr">
+                                <rect key="frame" x="144" y="72" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Persistence"/>
+                                <connections>
+                                    <segue destination="AC8-Lw-3Zk" kind="show" id="0Dk-ox-W5o"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		354F127521903EA200D0EB0D /* PersistenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F127421903EA200D0EB0D /* PersistenceViewController.swift */; };
 		355004F321831F36005C6FF7 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355004F221831F36005C6FF7 /* ARViewController.swift */; };
 		356DA4772173609E00AA39C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356DA4762173609E00AA39C3 /* AppDelegate.swift */; };
 		356DA4792173609E00AA39C3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 356DA4782173609E00AA39C3 /* art.scnassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		354F127421903EA200D0EB0D /* PersistenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceViewController.swift; sourceTree = "<group>"; };
 		355004F221831F36005C6FF7 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		356DA4732173609E00AA39C3 /* AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356DA4762173609E00AA39C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 			path = MultiUser;
 			sourceTree = "<group>";
 		};
+		354F127321903E5D00D0EB0D /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				354F127421903EA200D0EB0D /* PersistenceViewController.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		356DA46A2173609E00AA39C3 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		356DA4752173609E00AA39C3 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				354F127321903E5D00D0EB0D /* Persistence */,
 				354F127021900B0B00D0EB0D /* MultiUser */,
 				356DA47A2173609E00AA39C3 /* ViewController.swift */,
 				35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */,
@@ -169,6 +180,7 @@
 				35D42B10218D790100C982F8 /* MultiPeer.swift in Sources */,
 				356DA47B2173609E00AA39C3 /* ViewController.swift in Sources */,
 				35E3B35D21877A8F001DB903 /* CustomButton.swift in Sources */,
+				354F127521903EA200D0EB0D /* PersistenceViewController.swift in Sources */,
 				356DA4772173609E00AA39C3 /* AppDelegate.swift in Sources */,
 				355004F321831F36005C6FF7 /* ARViewController.swift in Sources */,
 				35E3B35B218764EB001DB903 /* BallViewController.swift in Sources */,

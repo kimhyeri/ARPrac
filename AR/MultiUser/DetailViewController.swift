@@ -93,6 +93,7 @@ extension DetailViewController {
     @objc func sendData() {
         print("sending data")
         
+        //getCurrentWorlMap Returns an object encapsulating the world-tracking session's space-mapping state and set of anchors.
         SCNView.session.getCurrentWorldMap { worldMap, error in
             guard let map = worldMap
                 else { print("Error: \(error!.localizedDescription)"); return }
