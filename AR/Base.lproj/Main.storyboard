@@ -100,7 +100,7 @@
                         <viewLayoutGuide key="safeArea" id="eth-WQ-BTx"/>
                     </view>
                     <connections>
-                        <outlet property="SCNView" destination="hcw-I2-fiA" id="thK-S8-gzz"/>
+                        <outlet property="SCNView" destination="hcw-I2-fiA" id="Tkb-Jh-MI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vR-Y2-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kv0-Ff-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1308" y="863"/>
+            <point key="canvasLocation" x="1598" y="1278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RO4-Hn-6l5">
@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bv4-dZ-U3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="862"/>
+            <point key="canvasLocation" x="2337" y="983"/>
         </scene>
     </scenes>
 </document>

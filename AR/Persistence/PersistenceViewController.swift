@@ -2,24 +2,21 @@
 //  PersistenceViewController.swift
 //  AR
 //
-//  Created by hyerikim on 05/11/2018.
+//  Created by hyerikim on 06/11/2018.
 //  Copyright © 2018 hyerikim. All rights reserved.
 //
 
 import UIKit
-import SceneKit
 import ARKit
+import SceneKit
 
-class PersistenceViewController: UIViewController , ARSCNViewDelegate, ARSessionDelegate {
+class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessionDelegate {
 
     @IBOutlet weak var SCNView: ARSCNView!
     
-    private var textNode = SCNNode()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setNaviButton()
+        setNavigationButton()
         
     }
     
@@ -41,47 +38,31 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate, ARSession
         
         SCNView.session.delegate = self
         SCNView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        UIApplication.shared.isIdleTimerDisabled = true
         SCNView.session.run(configuration)
         
     }
-    
-    func setNaviButton() {
-        let saveRightBarButtonItem = UIBarButtonItem.init(title: "save", style: .done, target: self, action: #selector(PersistenceViewController.saveData))
-        self.navigationItem.rightBarButtonItem = saveRightBarButtonItem
-        
-        let loadRightBarButtonItem = UIBarButtonItem.init(title: "load", style: .done, target: self, action: #selector(PersistenceViewController.loadData))
-        self.navigationItem.rightBarButtonItem = loadRightBarButtonItem
-    }
-    
-    //filemanager에 저장
-    lazy var mapSaveURL: URL = {
-        do {
-            return try FileManager.default
-                .url(for: .documentDirectory,
-                     in: .userDomainMask,
-                     appropriateFor: nil,
-                     create: true)
-                .appendingPathComponent("map.arexperience")
-        } catch {
-            fatalError("Can't get file save URL: \(error.localizedDescription)")
-        }
-    }()
+
 }
 
-//MARK: Persistence
+
+//MARK: Setting View
 extension PersistenceViewController {
-
-    //filemanager map 저장하기
     
-    @objc func saveData() {
-        print("saving Data")
+    func setNavigationButton() {
+        let saveRightBarButtonItem = UIBarButtonItem.init(title: "save", style: .done, target: self, action: #selector(PersistenceViewController.saveData))
+        
+        let loadRightBarButtonItem = UIBarButtonItem.init(title: "load", style: .done, target: self, action: #selector(PersistenceViewController.loadData))
 
+        self.navigationItem.rightBarButtonItems = [saveRightBarButtonItem, loadRightBarButtonItem]
     }
     
-    //filemanager map 불러오기
-
+    @objc func saveData() {
+        print("save Data")
+    }
+    
     @objc func loadData() {
-        
+        print("load Data")
     }
     
     // tap gesture
@@ -101,11 +82,18 @@ extension PersistenceViewController {
     func updateText(text: String, at: ARHitTestResult) {
         
         let textGeometry = SCNText(string: "\(text)", extrusionDepth: 1.0)
-        textGeometry.firstMaterial?.diffuse.contents = UIColor.blue
-        textNode = SCNNode(geometry: textGeometry)
+        textGeometry.firstMaterial?.diffuse.contents = UIColor.black
+        let textNode = SCNNode(geometry: textGeometry)
         textNode.position = SCNVector3(at.worldTransform.columns.3.x , at.worldTransform.columns.3.y, at.worldTransform.columns.3.z)
         textNode.scale = SCNVector3(0.01, 0.01, 0.01)
         SCNView.scene.rootNode.addChildNode(textNode)
     }
+
+}
+
+
+
+//MARK: Persistence
+extension PersistenceViewController {
     
 }
