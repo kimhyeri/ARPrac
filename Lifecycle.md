@@ -39,3 +39,24 @@
 
 - limited가 성공하려면 session이 중단되었을때의 위치 및 방향으로 되돌려야 함. (만약 그러지 않으면 계속 그 상태로 유지.)
 
+***
+
+## 4. 지속적인 AR 경험 만들기
+> iOS 12 이상에서 ARWorldMap 클래스는 ARKit이 session을 다시 시작하는데 사용하는 정보를 저장함.
+world maps 는 앵커를 포함하고 있어 이전 session과 일치하도록 가상 컨텐츠를 대체 가능함.
+
+* normal 추적 상태에서 앱이 종료되기 전에 worldmap을 저장함.
+
+* 앱을 다시 실행하고 저장된 worldmap을 로드하면 추적상태가 notAvailable 에서 limited(initializing)에서 limited(relocalizing)으로 진행된다.
+
+* 사용자가 앱을 종료한 후 동일한 ARSession으로 돌아올 수 있도록 하려면 명시적으로 world map을 저장하거나 applicationDidEnterBackground (_ :)에 자동으로 저장 가능.
+
+* 저장된 world map위치를 다시 지정하려면 session을 실행할때 initalworldMap속성을 사용.  
+  중단 -> 재시작  
+  ARCamera.TrackingState.limited (_ :) (ARCamera.TrackingState.Reason.relocalizing)에서 시작함.
+
+* ARKit이 기록된 world map을 현재 환경에 조정 불가한 경우.
+디바이스가 기록된 곳과 완전히 다른 곳에 있는 경우)  
+session은 무기한 ARCamera.TrackingState.Reason.relocalizing 유지 함.
+
+
