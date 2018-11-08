@@ -89,23 +89,33 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-I2-fiA">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </arscnView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9rh-uU-Qqa">
+                                <rect key="frame" x="16" y="80" width="120" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="v1U-TV-Oca"/>
+                                    <constraint firstAttribute="height" constant="170" id="xAG-xv-1rF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eth-WQ-BTx" firstAttribute="trailing" secondItem="hcw-I2-fiA" secondAttribute="trailing" id="JNN-xq-L0l"/>
                             <constraint firstItem="hcw-I2-fiA" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" id="Lkn-LR-OKC"/>
+                            <constraint firstItem="9rh-uU-Qqa" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" constant="16" id="beN-e3-joz"/>
                             <constraint firstItem="eth-WQ-BTx" firstAttribute="bottom" secondItem="hcw-I2-fiA" secondAttribute="bottom" id="hPF-fV-Z7m"/>
+                            <constraint firstItem="9rh-uU-Qqa" firstAttribute="leading" secondItem="eth-WQ-BTx" secondAttribute="leading" constant="16" id="iJx-2i-lqd"/>
                             <constraint firstItem="hcw-I2-fiA" firstAttribute="leading" secondItem="eth-WQ-BTx" secondAttribute="leading" id="ptw-Ty-kiB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eth-WQ-BTx"/>
                     </view>
                     <connections>
                         <outlet property="SCNView" destination="hcw-I2-fiA" id="Tkb-Jh-MI3"/>
+                        <outlet property="imageView" destination="9rh-uU-Qqa" id="rOJ-DT-MbU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vR-Y2-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="-745"/>
+            <point key="canvasLocation" x="895.20000000000005" y="-745.27736131934034"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="KRW-GA-5uv">

@@ -13,6 +13,7 @@ import SceneKit
 class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessionDelegate {
 
     @IBOutlet weak var SCNView: ARSCNView!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,10 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         if mapDataFromFile != nil {
 
         }
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,6 +93,10 @@ extension PersistenceViewController {
                 
             }
         }
+    }
+    
+    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
+        return true
     }
     
     func updateText(text: String, at: ARHitTestResult) {
