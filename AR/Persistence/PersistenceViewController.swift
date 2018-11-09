@@ -19,6 +19,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         super.viewDidLoad()
         setNavigationButton()
         
+        // load one
         if mapDataFromFile != nil {
 
         }
@@ -63,6 +64,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
             fatalError("Can't get file save URL: \(error.localizedDescription)")
         }
     }()
+    
 }
 
 
@@ -107,8 +109,9 @@ extension PersistenceViewController {
         textNode.position = SCNVector3(at.worldTransform.columns.3.x , at.worldTransform.columns.3.y, at.worldTransform.columns.3.z)
         textNode.scale = SCNVector3(0.01, 0.01, 0.01)
         SCNView.scene.rootNode.addChildNode(textNode)
+        
     }
-
+    
 }
 
 //MARK: Persistence
@@ -153,12 +156,14 @@ extension PersistenceViewController {
         // Display the snapshot image stored in the world map to aid user in relocalizing.
         if let snapshotData = worldMap.snapshotAnchor?.imageData,
             let snapshot = UIImage(data: snapshotData) {
+            self.imageView.image = snapshot
+
             //snapshot image 뜨게
         } else {
             print("No snapshot image in world map")
         }
         // Remove the snapshot anchor from the world map since we do not need it in the scene.
         worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
-        
+
     }
 }

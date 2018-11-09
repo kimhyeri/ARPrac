@@ -97,7 +97,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eth-WQ-BTx" firstAttribute="trailing" secondItem="hcw-I2-fiA" secondAttribute="trailing" id="JNN-xq-L0l"/>
                             <constraint firstItem="hcw-I2-fiA" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" id="Lkn-LR-OKC"/>
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vR-Y2-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895.20000000000005" y="-745.27736131934034"/>
+            <point key="canvasLocation" x="918" y="-554"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="KRW-GA-5uv">
