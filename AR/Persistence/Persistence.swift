@@ -66,6 +66,7 @@ extension PersistenceViewController {
         
         // Remove the snapshot anchor from the world map since we do not need it in the scene.
         worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
-        
+                
+        virtualObjectAnchor = nil
     }
 }

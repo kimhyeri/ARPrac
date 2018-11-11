@@ -19,17 +19,15 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationButton()
-        
-        // load one
-        if mapDataFromFile != nil {
-
-        }
-    }
     
+    }
+
+    // Lock the orientation of the app to the orientation in which it is launched
     override var shouldAutorotate: Bool {
         return false
     }
     
+    // Session pause
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -50,7 +48,6 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         SCNView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         UIApplication.shared.isIdleTimerDisabled = true
         SCNView.session.run(configuration)
-        
     }
 
     lazy var mapSaveURL: URL = {
@@ -68,15 +65,15 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
     
     var virtualObjectAnchor: ARAnchor?
     let virtualObjectAnchorName = "virtualObject"
-    
+
     var virtualObject: SCNNode = {
-
-        guard let sceneURL = Bundle.main.url(forResource: "ship", withExtension: "scn", subdirectory: "art.scnassets"), let referenceNode = SCNReferenceNode(url: sceneURL) else {
-                fatalError("can't load virtual object")
-        }
-        referenceNode.load()
-
-        return referenceNode
+   
+        let textGeometry = SCNText(string: "혜리", extrusionDepth: 1.0)
+        textGeometry.firstMaterial?.diffuse.contents = UIColor.red
+        let textNode = SCNNode(geometry: textGeometry)
+        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        
+        return textNode
     }()
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {

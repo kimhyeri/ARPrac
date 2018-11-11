@@ -29,52 +29,24 @@ extension PersistenceViewController {
     // tap gesture
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if let touchLocation = touches.first?.location(in: SCNView) {
-            
-            let hitTestResult = SCNView.hitTest(touchLocation, types: .featurePoint)
-            
-            if let hitResult = hitTestResult.first {
-                updateText(text: "혜리", at: hitResult)
-                //                putShip(at: hitResult)
-            }
+        // Hit test to find a place for a virtual object.
+        guard let hitTestResult = SCNView
+            .hitTest((touches.first?.location(in: SCNView))!, types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
+            .first
+            else { return }
+        
+        // get only one 
+        if let existingAnchor = virtualObjectAnchor {
+            SCNView.session.remove(anchor: existingAnchor)
         }
+        
+        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: hitTestResult.worldTransform)
+        SCNView.session.add(anchor: virtualObjectAnchor!)
+
     }
     
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
         return true
-    }
-    
-    func putShip (at: ARHitTestResult) {
-        
-        // Remove exisitng anchor and add new anchor
-        if let existingAnchor = virtualObjectAnchor {
-            SCNView.session.remove(anchor: existingAnchor)
-        }
-        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: at.worldTransform)
-        SCNView.session.add(anchor: virtualObjectAnchor!)
-        
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        SCNView.scene = scene
-        
-    }
-    
-    func updateText(text: String, at: ARHitTestResult) {
-        
-        // Remove exisitng anchor and add new anchor
-        if let existingAnchor = virtualObjectAnchor {
-            SCNView.session.remove(anchor: existingAnchor)
-        }
-        
-        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: at.worldTransform)
-        SCNView.session.add(anchor: virtualObjectAnchor!)
-        
-        let textGeometry = SCNText(string: "\(text)", extrusionDepth: 1.0)
-        textGeometry.firstMaterial?.diffuse.contents = UIColor.black
-        let textNode = SCNNode(geometry: textGeometry)
-        textNode.position = SCNVector3(at.worldTransform.columns.3.x , at.worldTransform.columns.3.y, at.worldTransform.columns.3.z)
-        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        SCNView.scene.rootNode.addChildNode(textNode)
-        
     }
     
     // indicates whether it’s currently a good time to capture a world map
