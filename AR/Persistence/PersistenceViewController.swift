@@ -14,6 +14,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
 
     @IBOutlet weak var SCNView: ARSCNView!
     @IBOutlet weak var imageView: UIImageView!
+    var worldMappingStatus : ARFrame.WorldMappingStatus?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,11 +113,22 @@ extension PersistenceViewController {
         
     }
     
+    // indicates whether it’s currently a good time to capture a world map
+    func feedBack() {
+        switch worldMappingStatus {
+        case .extending?, .mapped?:
+            print("좋음")
+        default:
+            print("구림")
+        }
+    }
+    
 }
 
 //MARK: Persistence
 extension PersistenceViewController {
     @objc func saveData() {
+        
         print("save Data")
         SCNView.session.getCurrentWorldMap { worldMap, error in
             guard let map = worldMap else { return }
