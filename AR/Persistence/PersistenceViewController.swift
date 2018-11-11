@@ -14,7 +14,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
 
     @IBOutlet weak var SCNView: ARSCNView!
     @IBOutlet weak var imageView: UIImageView!
-    var worldMappingStatus : ARFrame.WorldMappingStatus?
+    var worldMappingStatus: ARFrame.WorldMappingStatus?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,30 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         }
     }()
     
+    var virtualObjectAnchor: ARAnchor?
+    let virtualObjectAnchorName = "virtualObject"
+    
+    var virtualObject: SCNNode = {
+
+        guard let sceneURL = Bundle.main.url(forResource: "ship", withExtension: "scn", subdirectory: "art.scnassets"), let referenceNode = SCNReferenceNode(url: sceneURL) else {
+                fatalError("can't load virtual object")
+        }
+        referenceNode.load()
+
+        return referenceNode
+    }()
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard anchor.name == virtualObjectAnchorName
+            else { return }
+        
+        // save the reference to the virtual object anchor when the anchor is added from relocalizing
+        if virtualObjectAnchor == nil {
+            virtualObjectAnchor = anchor
+        }
+        node.addChildNode(virtualObject)
+    }
+    
 }
 
 
@@ -93,7 +117,7 @@ extension PersistenceViewController {
             
             if let hitResult = hitTestResult.first {
                 updateText(text: "혜리", at: hitResult)
-                
+//                putShip(at: hitResult)
             }
         }
     }
@@ -102,7 +126,29 @@ extension PersistenceViewController {
         return true
     }
     
+    func putShip (at: ARHitTestResult) {
+        
+        // Remove exisitng anchor and add new anchor
+        if let existingAnchor = virtualObjectAnchor {
+            SCNView.session.remove(anchor: existingAnchor)
+        }
+        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: at.worldTransform)
+        SCNView.session.add(anchor: virtualObjectAnchor!)
+
+        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        SCNView.scene = scene
+
+    }
+    
     func updateText(text: String, at: ARHitTestResult) {
+        
+        // Remove exisitng anchor and add new anchor
+        if let existingAnchor = virtualObjectAnchor {
+            SCNView.session.remove(anchor: existingAnchor)
+        }
+        
+        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: at.worldTransform)
+        SCNView.session.add(anchor: virtualObjectAnchor!)
         
         let textGeometry = SCNText(string: "\(text)", extrusionDepth: 1.0)
         textGeometry.firstMaterial?.diffuse.contents = UIColor.black
