@@ -96,11 +96,20 @@
                                     <constraint firstAttribute="height" constant="170" id="xAG-xv-1rF"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1XJ-Zx-NgS">
+                                <rect key="frame" x="317" y="80" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1XJ-Zx-NgS" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" constant="16" id="JDl-JH-XX2"/>
                             <constraint firstItem="eth-WQ-BTx" firstAttribute="trailing" secondItem="hcw-I2-fiA" secondAttribute="trailing" id="JNN-xq-L0l"/>
                             <constraint firstItem="hcw-I2-fiA" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" id="Lkn-LR-OKC"/>
+                            <constraint firstItem="eth-WQ-BTx" firstAttribute="trailing" secondItem="1XJ-Zx-NgS" secondAttribute="trailing" constant="16" id="YYQ-Uf-K48"/>
                             <constraint firstItem="9rh-uU-Qqa" firstAttribute="top" secondItem="eth-WQ-BTx" secondAttribute="top" constant="16" id="beN-e3-joz"/>
                             <constraint firstItem="eth-WQ-BTx" firstAttribute="bottom" secondItem="hcw-I2-fiA" secondAttribute="bottom" id="hPF-fV-Z7m"/>
                             <constraint firstItem="9rh-uU-Qqa" firstAttribute="leading" secondItem="eth-WQ-BTx" secondAttribute="leading" constant="16" id="iJx-2i-lqd"/>
@@ -111,6 +120,7 @@
                     <connections>
                         <outlet property="SCNView" destination="hcw-I2-fiA" id="Tkb-Jh-MI3"/>
                         <outlet property="imageView" destination="9rh-uU-Qqa" id="rOJ-DT-MbU"/>
+                        <outlet property="statusLabel" destination="1XJ-Zx-NgS" id="Yb0-eP-7ix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vR-Y2-YQS" userLabel="First Responder" sceneMemberID="firstResponder"/>

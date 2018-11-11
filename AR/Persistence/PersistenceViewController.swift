@@ -14,6 +14,8 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
 
     @IBOutlet weak var SCNView: ARSCNView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    
     var worldMappingStatus: ARFrame.WorldMappingStatus?
     
     override func viewDidLoad() {
@@ -158,17 +160,22 @@ extension PersistenceViewController {
         SCNView.scene.rootNode.addChildNode(textNode)
         
     }
-    
+
     // indicates whether it’s currently a good time to capture a world map
-    func feedBack() {
-        switch worldMappingStatus {
-        case .extending?, .mapped?:
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        // Enable Save button only when the mapping status is good and an object has been placed
+        switch frame.worldMappingStatus {
+        case .extending, .mapped:
             print("좋음")
         default:
             print("구림")
         }
+        statusLabel.text = """
+        Mapping: \(frame.worldMappingStatus.description)
+        Tracking: \(frame.camera.trackingState.description)
+        """
     }
-    
+
 }
 
 //MARK: Persistence
