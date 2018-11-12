@@ -57,6 +57,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		354DFC2E2199625D002A75FF /* Ruler */ = {
+			isa = PBXGroup;
+			children = (
+				35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */,
+			);
+			path = Ruler;
+			sourceTree = "<group>";
+		};
+		354DFC2F21996270002A75FF /* Basketball */ = {
+			isa = PBXGroup;
+			children = (
+				35E3B35A218764EB001DB903 /* BallViewController.swift */,
+				35E3B35C21877A8F001DB903 /* CustomButton.swift */,
+			);
+			path = Basketball;
+			sourceTree = "<group>";
+		};
+		354DFC302199628B002A75FF /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				356DA47A2173609E00AA39C3 /* ViewController.swift */,
+				355004F221831F36005C6FF7 /* ARViewController.swift */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
 		354F127021900B0B00D0EB0D /* MultiUser */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,13 +122,11 @@
 		356DA4752173609E00AA39C3 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				354DFC302199628B002A75FF /* Geometry */,
+				354DFC2F21996270002A75FF /* Basketball */,
+				354DFC2E2199625D002A75FF /* Ruler */,
 				354F127321903E5D00D0EB0D /* Persistence */,
 				354F127021900B0B00D0EB0D /* MultiUser */,
-				356DA47A2173609E00AA39C3 /* ViewController.swift */,
-				35A064FA217CDEFF00AA0B41 /* RulerViewController.swift */,
-				355004F221831F36005C6FF7 /* ARViewController.swift */,
-				35E3B35A218764EB001DB903 /* BallViewController.swift */,
-				35E3B35C21877A8F001DB903 /* CustomButton.swift */,
 				356DA47C2173609E00AA39C3 /* Main.storyboard */,
 				356DA4762173609E00AA39C3 /* AppDelegate.swift */,
 				356DA4782173609E00AA39C3 /* art.scnassets */,
