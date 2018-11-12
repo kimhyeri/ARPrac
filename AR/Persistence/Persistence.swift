@@ -62,7 +62,7 @@ extension PersistenceViewController {
             print("No snapshot image in world map")
         }
         // Remove the snapshot anchor from the world map since we do not need it in the scene.
-        worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
+//        worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
         
         let configuration  = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal

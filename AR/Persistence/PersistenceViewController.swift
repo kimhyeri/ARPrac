@@ -70,14 +70,6 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
     
     var virtualObject: SCNNode = {
         
-//        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-//        let material = SCNMaterial()
-//        material.diffuse.contents = UIColor.red
-//        cube.materials = [material]
-//        let node = SCNNode()
-//        node.position = SCNVector3(0.01, 0.01, -0.01)
-//        node.geometry = cube
-
         let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.red

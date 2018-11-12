@@ -35,7 +35,8 @@ extension PersistenceViewController {
         // Enable Save button only when the mapping status is good and an object has been placed
         switch frame.worldMappingStatus {
         case .extending, .mapped:
-            print("좋음")
+            if ( virtualObjectAnchor != nil && frame.anchors.contains(virtualObjectAnchor!) ){
+                print("좋음") }
         default:
             print("구림")
         }
