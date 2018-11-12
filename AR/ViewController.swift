@@ -10,11 +10,13 @@ import UIKit
 import SceneKit
 import ARKit
 
+//Dice Example 
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    var diceArray = [SCNNode]()
+    private var diceArray = [SCNNode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +26,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
 
-        
-//        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-//        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-//            diceNode.position = SCNVector3(0, 0, -0.1)
-//            sceneView.scene.rootNode.addChildNode(diceNode)
-//        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,19 +33,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let configuration  = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
-        
-//        if ARWorldTrackingConfiguration.isSupported {
-//            configuration = ARWorldTrackingConfiguration()
-//            configuration.planeDetection = .horizontal
-//        }
-//        else {
-//            configuration = AROrientationTrackingConfiguration()
-//        }
-//
         sceneView.session.run(configuration)
+        
     }
     
-    //anchor : 타일
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if anchor is ARPlaneAnchor {
             let planeAnchor = anchor as! ARPlaneAnchor
@@ -150,9 +136,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
         }
     }
+    
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         rollAll()
     }
-
 
 }

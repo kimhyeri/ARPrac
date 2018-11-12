@@ -65,11 +65,28 @@ class ARViewController: UIViewController {
         ARSCNView.session.run(configuration)
     }
     
-
+    
+    @IBAction func captureButtonPressed(_ sender: Any) {
+        takeScreenshot(true)
+    }
+    
 }
 
 
 
 extension ARViewController : ARSCNViewDelegate {
-    
+    open func takeScreenshot(_ shouldSave: Bool = true) -> UIImage? {
+        var screenshotImage :UIImage?
+        let layer = UIApplication.shared.keyWindow!.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        guard let context = UIGraphicsGetCurrentContext() else {return nil}
+        layer.render(in:context)
+        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if let image = screenshotImage, shouldSave {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
+        return screenshotImage
+    }
 }
