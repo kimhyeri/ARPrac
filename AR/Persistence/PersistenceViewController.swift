@@ -34,6 +34,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         SCNView.session.pause()
     }
     
+    // Set default configuration and run session
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -50,6 +51,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         SCNView.session.run(configuration)
     }
 
+    // Access filemanager world map
     lazy var mapSaveURL: URL = {
         do {
             return try FileManager.default
@@ -65,17 +67,28 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
     
     var virtualObjectAnchor: ARAnchor?
     let virtualObjectAnchorName = "virtualObject"
-
+    
     var virtualObject: SCNNode = {
-   
-        let textGeometry = SCNText(string: "혜리", extrusionDepth: 1.0)
-        textGeometry.firstMaterial?.diffuse.contents = UIColor.red
-        let textNode = SCNNode(geometry: textGeometry)
-        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
         
-        return textNode
+//        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+//        let material = SCNMaterial()
+//        material.diffuse.contents = UIColor.red
+//        cube.materials = [material]
+//        let node = SCNNode()
+//        node.position = SCNVector3(0.01, 0.01, -0.01)
+//        node.geometry = cube
+
+        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.red
+        cube.materials = [material]
+        let node = SCNNode()
+        node.geometry = cube
+        
+        return node
     }()
     
+    // Restore AR Content 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard anchor.name == virtualObjectAnchorName
             else { return }
@@ -84,8 +97,9 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         if virtualObjectAnchor == nil {
             virtualObjectAnchor = anchor
         }
+        
         node.addChildNode(virtualObject)
+
     }
-    
 }
 

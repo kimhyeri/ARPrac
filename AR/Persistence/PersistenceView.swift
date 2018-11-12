@@ -26,25 +26,6 @@ extension PersistenceViewController {
         return try? Data(contentsOf: mapSaveURL)
     }
     
-    // tap gesture
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        // Hit test to find a place for a virtual object.
-        guard let hitTestResult = SCNView
-            .hitTest((touches.first?.location(in: SCNView))!, types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
-            .first
-            else { return }
-        
-        // get only one 
-        if let existingAnchor = virtualObjectAnchor {
-            SCNView.session.remove(anchor: existingAnchor)
-        }
-        
-        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: hitTestResult.worldTransform)
-        SCNView.session.add(anchor: virtualObjectAnchor!)
-
-    }
-    
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
         return true
     }
@@ -62,6 +43,37 @@ extension PersistenceViewController {
         Mapping: \(frame.worldMappingStatus.description)
         Tracking: \(frame.camera.trackingState.description)
         """
+    }
+    
+    @IBAction func handleSceneTap(_ sender: UITapGestureRecognizer) {
+       
+        // Hit test to find a place for a virtual object.
+        guard let hitTestResult = SCNView
+            .hitTest(sender.location(in: SCNView), types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
+            .first
+            else { return }
+        
+        // Remove exisitng anchor and add new anchor
+        if let existingAnchor = virtualObjectAnchor {
+            SCNView.session.remove(anchor: existingAnchor)
+        }
+        
+        addCube(at: hitTestResult)
+        
+        virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: hitTestResult.worldTransform)
+    }
+    
+    func addCube(at: ARHitTestResult) {
+        
+        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.red
+        cube.materials = [material]
+        let node = SCNNode()
+        node.position = SCNVector3(at.worldTransform.columns.3.x, at.worldTransform.columns.3.y, at.worldTransform.columns.3.z)
+        node.geometry = cube
+        SCNView.scene.rootNode.addChildNode(node)
+
     }
     
 }

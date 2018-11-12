@@ -41,7 +41,7 @@ extension PersistenceViewController {
     // load snapshot
     @objc func loadData() {
         print("load Data")
-        /// - Tag: ReadWorldMap
+        
         let worldMap: ARWorldMap = {
             guard let data = mapDataFromFile
                 else { fatalError("Map data should already be verified to exist before Load button is enabled.") }
@@ -58,15 +58,19 @@ extension PersistenceViewController {
         if let snapshotData = worldMap.snapshotAnchor?.imageData,
             let snapshot = UIImage(data: snapshotData) {
             self.imageView.image = snapshot
-            
-            //snapshot image 뜨게
         } else {
             print("No snapshot image in world map")
         }
-        
         // Remove the snapshot anchor from the world map since we do not need it in the scene.
         worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
-                
+        
+        let configuration  = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        configuration.initialWorldMap = worldMap
+        SCNView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
         virtualObjectAnchor = nil
     }
+    
+    
 }
