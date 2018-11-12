@@ -14,6 +14,20 @@ import SceneKit
 
 extension PersistenceViewController {
     
+    
+    //stop scnview session run
+    @objc func stopRunning() {
+        
+        let configuration  = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        
+        SCNView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        isRelocalizingMap = false
+        virtualObjectAnchor = nil
+        
+        self.imageView.image = nil
+    }
+    
     //save snapshot
     @objc func saveData() {
         
@@ -61,16 +75,17 @@ extension PersistenceViewController {
         } else {
             print("No snapshot image in world map")
         }
+        
         // Remove the snapshot anchor from the world map since we do not need it in the scene.
-//        worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
+        worldMap.anchors.removeAll(where: { $0 is SnapshotAnchor })
         
         let configuration  = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         configuration.initialWorldMap = worldMap
         SCNView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
+        isRelocalizingMap = true
         virtualObjectAnchor = nil
     }
-    
     
 }

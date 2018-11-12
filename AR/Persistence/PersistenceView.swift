@@ -14,20 +14,18 @@ import SceneKit
 //MARK: Setting View
 extension PersistenceViewController {
     
+    var mapDataFromFile: Data? {
+        return try? Data(contentsOf: mapSaveURL)
+    }
+    
     func setNavigationButton() {
         let saveRightBarButtonItem = UIBarButtonItem.init(title: "save", style: .done, target: self, action: #selector(PersistenceViewController.saveData))
         
         let loadRightBarButtonItem = UIBarButtonItem.init(title: "load", style: .done, target: self, action: #selector(PersistenceViewController.loadData))
         
-        self.navigationItem.rightBarButtonItems = [saveRightBarButtonItem, loadRightBarButtonItem]
-    }
-    
-    var mapDataFromFile: Data? {
-        return try? Data(contentsOf: mapSaveURL)
-    }
-    
-    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
-        return true
+        let stopBarButtonItem = UIBarButtonItem.init(title: "stop", style: .done, target: self, action: #selector(PersistenceViewController.stopRunning))
+        
+        self.navigationItem.rightBarButtonItems = [saveRightBarButtonItem, loadRightBarButtonItem, stopBarButtonItem]
     }
     
     // indicates whether it’s currently a good time to capture a world map
@@ -38,7 +36,7 @@ extension PersistenceViewController {
             if ( virtualObjectAnchor != nil && frame.anchors.contains(virtualObjectAnchor!) ){
                 print("좋음") }
         default:
-            print("구림")
+            self.navigationController?.navigationItem.rightBarButtonItem?.isEnabled = false
         }
         statusLabel.text = """
         Mapping: \(frame.worldMappingStatus.description)
@@ -46,8 +44,13 @@ extension PersistenceViewController {
         """
     }
     
+    //Tap recognize
     @IBAction func handleSceneTap(_ sender: UITapGestureRecognizer) {
        
+        if isRelocalizingMap && virtualObjectAnchor == nil {
+            return
+        }
+        
         // Hit test to find a place for a virtual object.
         guard let hitTestResult = SCNView
             .hitTest(sender.location(in: SCNView), types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
@@ -59,22 +62,9 @@ extension PersistenceViewController {
             SCNView.session.remove(anchor: existingAnchor)
         }
         
-        addCube(at: hitTestResult)
-        
         virtualObjectAnchor = ARAnchor(name: virtualObjectAnchorName, transform: hitTestResult.worldTransform)
-    }
-    
-    func addCube(at: ARHitTestResult) {
+        SCNView.session.add(anchor: virtualObjectAnchor!)
         
-        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-        let material = SCNMaterial()
-        material.diffuse.contents = UIColor.red
-        cube.materials = [material]
-        let node = SCNNode()
-        node.position = SCNVector3(at.worldTransform.columns.3.x, at.worldTransform.columns.3.y, at.worldTransform.columns.3.z)
-        node.geometry = cube
-        SCNView.scene.rootNode.addChildNode(node)
-
     }
     
 }

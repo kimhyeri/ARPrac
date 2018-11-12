@@ -16,6 +16,8 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
     
+    var isRelocalizingMap = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationButton()
@@ -45,9 +47,11 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         let configuration  = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         
+        SCNView.delegate = self
         SCNView.session.delegate = self
         SCNView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         UIApplication.shared.isIdleTimerDisabled = true
+        SCNView.autoenablesDefaultLighting = true
         SCNView.session.run(configuration)
     }
 
@@ -76,7 +80,7 @@ class PersistenceViewController: UIViewController , ARSCNViewDelegate , ARSessio
         cube.materials = [material]
         let node = SCNNode()
         node.geometry = cube
-        
+
         return node
     }()
     
