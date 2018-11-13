@@ -14,13 +14,15 @@ class AnimationViewController: UIViewController {
 
     @IBOutlet weak var SCNView: ARSCNView!
     
+    var selectShape : SCNNode?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SCNView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
         
         SCNView.delegate = self
-
+        setNavaitionButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +54,18 @@ extension AnimationViewController : ARSCNViewDelegate {
         let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
         //transform의 4번째 column
         let location = SCNVector3(transform.m41, transform.m42, transform.m43)
+
+        let position = addSCNVector3(left: orientation, right: location)
         
+        getGeometry(position: position)
         
     }
     
+}
+
+// SCNVector3 + SCNVector3
+func addSCNVector3 (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+    return SCNVector3(left.x + right.x,
+                      left.y + right.y,
+                      left.z + right.z)
 }
