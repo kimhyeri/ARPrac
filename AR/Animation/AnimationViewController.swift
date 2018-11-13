@@ -7,16 +7,32 @@
 //
 
 import UIKit
+import ARKit
+import SceneKit
 
-class AnimationViewController: UIViewController {
+class AnimationViewController: UIViewController , ARSCNViewDelegate {
 
+    @IBOutlet weak var SCNView: ARSCNView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SCNView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
+        
+        SCNView.delegate = self
 
-        // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        SCNView.session.run(configuration)
+    }
 
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
 }

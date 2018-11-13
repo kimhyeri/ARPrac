@@ -397,10 +397,10 @@
             </objects>
             <point key="canvasLocation" x="2337" y="983"/>
         </scene>
-        <!--View Controller-->
+        <!--Animation View Controller-->
         <scene sceneID="KWN-7A-y3c">
             <objects>
-                <viewController id="XtT-Az-XbP" sceneMemberID="viewController">
+                <viewController id="XtT-Az-XbP" customClass="AnimationViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3FR-wZ-Iy5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,6 +418,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HdC-fj-tob"/>
                     </view>
+                    <connections>
+                        <outlet property="SCNView" destination="Rg9-9Z-qoX" id="yan-fR-rA8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJE-mS-aLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
