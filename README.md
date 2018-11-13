@@ -81,6 +81,20 @@ else  {
 } 
 ```
 
+### Coordinate System
+- Origin  
+: AR session이 시작했을때 기기의 위치
+
+- Position  
+: Origin을 기준으로 한 공간상의 위치
+
+- Orientation  
+: 어떤 각도로 x 축, y 축 및 z 축 연관 기울기
+
+### Scene graph
+- root node
+- root's child nodes (Action)
+
 ### 유저 요구사항
 
 * A9 chip devices: SE, 6S (plus), 7 (plus) , pro , 9.7-inch ipad ++  
