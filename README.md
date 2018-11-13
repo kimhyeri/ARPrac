@@ -81,11 +81,21 @@ else  {
 } 
 ```
 
-### 요구사항
+### 유저 요구사항
 
-*A9 chip
-*devices 
-*SE, 6S (plus), 7 (plus) , pro , 9.7-inch ipad ++
+* A9 chip devices: SE, 6S (plus), 7 (plus) , pro , 9.7-inch ipad ++  
+  
+* iOS11 - ARKit 지원  
+* 허가 승인 permission to use the camera.  
+* 빛이 있어야함.
+
+### 개발자 요구사항
+
+* User requirements  
+
+* Xcode9.3 이상   
+* SpriteKit , SceneKit    
+
 
 ### 단점
 베터리가 많이 소모되는 단점이 존재
