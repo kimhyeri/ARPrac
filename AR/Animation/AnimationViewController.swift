@@ -57,10 +57,18 @@ extension AnimationViewController : ARSCNViewDelegate {
 
         let position = addSCNVector3(left: orientation, right: location)
         
+        DispatchQueue.main.async {
+            
+            let rotateAction = SCNAction.rotate(by: 2 * .pi,
+                                                around: SCNVector3(0, 1, 0),
+                                                duration: 2)
+            let rotateForeverAction = SCNAction.repeatForever(rotateAction)
+            self.selectShape?.runAction(rotateForeverAction)
+            
+        }
         getGeometry(position: position)
         
     }
-    
 }
 
 // SCNVector3 + SCNVector3
