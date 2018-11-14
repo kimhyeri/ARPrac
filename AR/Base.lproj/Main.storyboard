@@ -362,18 +362,27 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXD-uT-NWM">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </arscnView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyE-WW-3m8">
+                                <rect key="frame" x="166.5" y="94" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="30d-xo-RA6" firstAttribute="bottom" secondItem="MXD-uT-NWM" secondAttribute="bottom" id="Ngd-sw-O0V"/>
                             <constraint firstItem="MXD-uT-NWM" firstAttribute="leading" secondItem="30d-xo-RA6" secondAttribute="leading" id="XXa-D8-Ab5"/>
+                            <constraint firstItem="qyE-WW-3m8" firstAttribute="centerX" secondItem="Ecw-Mh-kMr" secondAttribute="centerX" id="eSf-JC-C15"/>
                             <constraint firstItem="MXD-uT-NWM" firstAttribute="top" secondItem="30d-xo-RA6" secondAttribute="top" id="ibq-60-OKT"/>
                             <constraint firstItem="30d-xo-RA6" firstAttribute="trailing" secondItem="MXD-uT-NWM" secondAttribute="trailing" id="mhh-dk-eSf"/>
+                            <constraint firstItem="qyE-WW-3m8" firstAttribute="top" secondItem="30d-xo-RA6" secondAttribute="top" constant="30" id="sR5-Kj-DTz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="30d-xo-RA6"/>
                     </view>
                     <connections>
                         <outlet property="SCNView" destination="MXD-uT-NWM" id="Mfh-9T-Slr"/>
+                        <outlet property="infoLabel" destination="qyE-WW-3m8" id="VbA-KC-rLM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4K-ag-jgL" userLabel="First Responder" sceneMemberID="firstResponder"/>

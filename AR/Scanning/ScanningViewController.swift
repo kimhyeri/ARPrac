@@ -12,13 +12,14 @@ import SpriteKit
 
 class ScanningViewController: UIViewController {
 
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet var SCNView: ARSCNView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SCNView.delegate = self
-        SCNView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
+        SCNView.debugOptions = [.showFeaturePoints]
 
     }
 
@@ -27,7 +28,8 @@ class ScanningViewController: UIViewController {
         
         let configuration = ARWorldTrackingConfiguration()
         
-        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Bottle", bundle: nil) else {
+        //.arobjc 추가해줘야함. Bottle ar group폴더에
+        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Bottle", bundle: Bundle.main) else {
             fatalError("Missing expected asset catalog resources.")
         }
         
@@ -45,27 +47,26 @@ class ScanningViewController: UIViewController {
 
 //MARK -  SCNView Delegate method
 
-extension ScanningViewController : ARSCNViewDelegate {
+extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let objectAnchor = anchor as? ARObjectAnchor {
+            
             print(objectAnchor)
-        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        
-        let node = SCNNode()
-        
-        if let objectAnchor = anchor as? ARObjectAnchor {
+            infoLabel.text = "detect"
+            
             let sphere = SCNSphere(radius: 0.2)
+            
             sphere.firstMaterial?.diffuse.contents = UIColor.red
-            node.position = SCNVector3(0.1, 0.1, 0.1)
-            node.addChildNode(planeNode)
-
+            node.position = SCNVector3(objectAnchor.transform.columns.3.x,
+                                       objectAnchor.transform.columns.3.y,
+                                       objectAnchor.transform.columns.3.z)
+            node.geometry = sphere
+            infoLabel.text = "detect"
+            
+            SCNView.scene.rootNode.addChildNode(node)
+            
         }
-        
-        return node
     }
     
 }
