@@ -222,11 +222,11 @@
                                     <segue destination="XtT-Az-XbP" kind="show" id="4xj-w1-BCE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uO-TF-vdt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCM-ym-kzA">
                                 <rect key="frame" x="30" y="318.5" width="64" height="30"/>
                                 <state key="normal" title="Scanning"/>
                                 <connections>
-                                    <segue destination="IA7-aH-bqX" kind="show" id="8sP-ST-C8m"/>
+                                    <segue destination="IA7-aH-bqX" kind="show" id="aiA-Xq-v0Q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -240,13 +240,13 @@
                             <constraint firstItem="oAG-5G-dVn" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="Jy5-7H-R0e"/>
                             <constraint firstItem="Fsf-Q3-Qh5" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="Pr9-fE-Y6d"/>
                             <constraint firstItem="mgK-Z5-kGW" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="QMl-Eo-2bI"/>
-                            <constraint firstItem="3uO-TF-vdt" firstAttribute="leading" secondItem="no8-9r-JL2" secondAttribute="leading" constant="30" id="RmM-KC-bi1"/>
                             <constraint firstItem="Fsf-Q3-Qh5" firstAttribute="top" secondItem="Sz5-AJ-lCr" secondAttribute="bottom" constant="50" id="SEi-XT-tKy"/>
                             <constraint firstItem="s3b-4u-NIC" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="SQy-Qo-hch"/>
-                            <constraint firstItem="3uO-TF-vdt" firstAttribute="centerY" secondItem="G3y-NY-dj9" secondAttribute="centerY" id="bKf-MZ-JWc"/>
                             <constraint firstItem="mgK-Z5-kGW" firstAttribute="top" secondItem="e8A-w6-Xrd" secondAttribute="bottom" constant="50" id="caM-DO-P8g"/>
+                            <constraint firstItem="cCM-ym-kzA" firstAttribute="centerY" secondItem="G3y-NY-dj9" secondAttribute="centerY" id="fab-8e-iNy"/>
                             <constraint firstItem="e8A-w6-Xrd" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="gIk-80-BUu"/>
                             <constraint firstItem="Sz5-AJ-lCr" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="hTH-Ea-Jpw"/>
+                            <constraint firstItem="cCM-ym-kzA" firstAttribute="leading" secondItem="no8-9r-JL2" secondAttribute="leading" constant="30" id="kiK-WS-g5c"/>
                             <constraint firstItem="s3b-4u-NIC" firstAttribute="top" secondItem="oAG-5G-dVn" secondAttribute="bottom" constant="50" id="rN9-hH-Lsq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="no8-9r-JL2"/>
@@ -355,12 +355,25 @@
         <scene sceneID="dqj-i7-x1V">
             <objects>
                 <viewController id="IA7-aH-bqX" customClass="ScanningViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="iOQ-4s-nTy">
+                    <view key="view" contentMode="scaleToFill" id="Ecw-Mh-kMr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXD-uT-NWM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="30d-xo-RA6" firstAttribute="bottom" secondItem="MXD-uT-NWM" secondAttribute="bottom" id="Ngd-sw-O0V"/>
+                            <constraint firstItem="MXD-uT-NWM" firstAttribute="leading" secondItem="30d-xo-RA6" secondAttribute="leading" id="XXa-D8-Ab5"/>
+                            <constraint firstItem="MXD-uT-NWM" firstAttribute="top" secondItem="30d-xo-RA6" secondAttribute="top" id="ibq-60-OKT"/>
+                            <constraint firstItem="30d-xo-RA6" firstAttribute="trailing" secondItem="MXD-uT-NWM" secondAttribute="trailing" id="mhh-dk-eSf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="30d-xo-RA6"/>
+                    </view>
                     <connections>
-                        <outlet property="SCNView" destination="iOQ-4s-nTy" id="ZX3-W8-eXa"/>
+                        <outlet property="SCNView" destination="MXD-uT-NWM" id="Mfh-9T-Slr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4K-ag-jgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
