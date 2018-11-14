@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35496CB52191657F00EFE418 /* PersistenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496CB42191657F00EFE418 /* PersistenceViewController.swift */; };
 		355004F321831F36005C6FF7 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355004F221831F36005C6FF7 /* ARViewController.swift */; };
+		3556A242219BF0160023B966 /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556A241219BF0160023B966 /* ScanningViewController.swift */; };
 		356853A3219A75B60007D8E9 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356853A2219A75B60007D8E9 /* AnimationViewController.swift */; };
 		356853A5219A80250007D8E9 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356853A4219A80250007D8E9 /* AnimationView.swift */; };
 		356853A7219A804C0007D8E9 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356853A6219A804C0007D8E9 /* Shape.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		35496CB42191657F00EFE418 /* PersistenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceViewController.swift; sourceTree = "<group>"; };
 		355004F221831F36005C6FF7 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		3556A241219BF0160023B966 /* ScanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewController.swift; sourceTree = "<group>"; };
 		356853A2219A75B60007D8E9 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		356853A4219A80250007D8E9 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		356853A6219A804C0007D8E9 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		3556A240219BEF730023B966 /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				3556A241219BF0160023B966 /* ScanningViewController.swift */,
+			);
+			path = Scanning;
+			sourceTree = "<group>";
+		};
 		356853A1219A751D0007D8E9 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +148,7 @@
 		356DA4752173609E00AA39C3 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				3556A240219BEF730023B966 /* Scanning */,
 				356853A1219A751D0007D8E9 /* Animation */,
 				354DFC302199628B002A75FF /* Geometry */,
 				354DFC2F21996270002A75FF /* Basketball */,
@@ -233,6 +244,7 @@
 				35E3B35D21877A8F001DB903 /* CustomButton.swift in Sources */,
 				35496CB52191657F00EFE418 /* PersistenceViewController.swift in Sources */,
 				356DA4772173609E00AA39C3 /* AppDelegate.swift in Sources */,
+				3556A242219BF0160023B966 /* ScanningViewController.swift in Sources */,
 				355004F321831F36005C6FF7 /* ARViewController.swift in Sources */,
 				35F4D96621989A22000CCAA9 /* PersistenceView.swift in Sources */,
 				35E3B35B218764EB001DB903 /* BallViewController.swift in Sources */,

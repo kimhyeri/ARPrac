@@ -222,6 +222,13 @@
                                     <segue destination="XtT-Az-XbP" kind="show" id="4xj-w1-BCE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uO-TF-vdt">
+                                <rect key="frame" x="30" y="318.5" width="64" height="30"/>
+                                <state key="normal" title="Scanning"/>
+                                <connections>
+                                    <segue destination="IA7-aH-bqX" kind="show" id="8sP-ST-C8m"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -233,8 +240,10 @@
                             <constraint firstItem="oAG-5G-dVn" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="Jy5-7H-R0e"/>
                             <constraint firstItem="Fsf-Q3-Qh5" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="Pr9-fE-Y6d"/>
                             <constraint firstItem="mgK-Z5-kGW" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="QMl-Eo-2bI"/>
+                            <constraint firstItem="3uO-TF-vdt" firstAttribute="leading" secondItem="no8-9r-JL2" secondAttribute="leading" constant="30" id="RmM-KC-bi1"/>
                             <constraint firstItem="Fsf-Q3-Qh5" firstAttribute="top" secondItem="Sz5-AJ-lCr" secondAttribute="bottom" constant="50" id="SEi-XT-tKy"/>
                             <constraint firstItem="s3b-4u-NIC" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="SQy-Qo-hch"/>
+                            <constraint firstItem="3uO-TF-vdt" firstAttribute="centerY" secondItem="G3y-NY-dj9" secondAttribute="centerY" id="bKf-MZ-JWc"/>
                             <constraint firstItem="mgK-Z5-kGW" firstAttribute="top" secondItem="e8A-w6-Xrd" secondAttribute="bottom" constant="50" id="caM-DO-P8g"/>
                             <constraint firstItem="e8A-w6-Xrd" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="gIk-80-BUu"/>
                             <constraint firstItem="Sz5-AJ-lCr" firstAttribute="centerX" secondItem="G3y-NY-dj9" secondAttribute="centerX" id="hTH-Ea-Jpw"/>
@@ -342,6 +351,22 @@
             </objects>
             <point key="canvasLocation" x="1598" y="1278"/>
         </scene>
+        <!--Scanning View Controller-->
+        <scene sceneID="dqj-i7-x1V">
+            <objects>
+                <viewController id="IA7-aH-bqX" customClass="ScanningViewController" customModule="AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="iOQ-4s-nTy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </arscnView>
+                    <connections>
+                        <outlet property="SCNView" destination="iOQ-4s-nTy" id="ZX3-W8-eXa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4K-ag-jgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="204" y="71"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="RO4-Hn-6l5">
             <objects>
@@ -375,9 +400,6 @@
                                 <rect key="frame" x="164" y="586" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="captureButtonPressed:" destination="T7i-Vg-nI5" eventType="touchUpInside" id="znQ-im-Rmx"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

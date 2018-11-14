@@ -64,10 +64,10 @@ extension AnimationViewController : ARSCNViewDelegate {
                                                 duration: 2)
             let rotateForeverAction = SCNAction.repeatForever(rotateAction)
             self.selectShape?.runAction(rotateForeverAction)
-            
+         
+            self.getGeometry(position: position)
+
         }
-        getGeometry(position: position)
-        
     }
 }
 

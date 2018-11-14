@@ -21,21 +21,16 @@ class ARViewController: UIViewController {
         self.ARSCNView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
         
-        //radius = 모서리 10cm 10cm 10cm
         let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
         
         let sphere = SCNSphere(radius: 0.2)
-//        color red assign
-//        지오메트리 표면의 모양을 정의하는 음영 속성의 집합
+        
         let material  =  SCNMaterial()
         
-        //        material.diffuse.contents = UIColor.red
         material.diffuse.contents = UIImage(named: "art.scnassets/river.jpeg")
         
         sphere.materials = [material]
         
-        //point 3d space
-        //3D 좌표 공간에서 위치와 변형을 나태내는 장면 그래프의 구조
         let node = SCNNode()
         
         //3 성분 벡터의 표현
@@ -65,28 +60,4 @@ class ARViewController: UIViewController {
         ARSCNView.session.run(configuration)
     }
     
-    
-    @IBAction func captureButtonPressed(_ sender: Any) {
-        takeScreenshot(true)
-    }
-    
-}
-
-
-
-extension ARViewController : ARSCNViewDelegate {
-    open func takeScreenshot(_ shouldSave: Bool = true) -> UIImage? {
-        var screenshotImage :UIImage?
-        let layer = UIApplication.shared.keyWindow!.layer
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-        guard let context = UIGraphicsGetCurrentContext() else {return nil}
-        layer.render(in:context)
-        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        if let image = screenshotImage, shouldSave {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
-        return screenshotImage
-    }
 }
