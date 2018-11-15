@@ -11,5 +11,6 @@ import Foundation
 extension ScanningViewController {
     func setupView() {
         infoLabel.text = ""
+        cameraLabel.text = ""
     }
 }

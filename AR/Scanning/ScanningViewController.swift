@@ -12,6 +12,7 @@ import SpriteKit
 
 class ScanningViewController: UIViewController {
 
+    @IBOutlet weak var cameraLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet var SCNView: ARSCNView!
     
@@ -20,6 +21,7 @@ class ScanningViewController: UIViewController {
         
         SCNView.delegate = self
         SCNView.debugOptions = [.showFeaturePoints]
+        setupView()
 
     }
 
@@ -28,12 +30,12 @@ class ScanningViewController: UIViewController {
         
         let configuration = ARWorldTrackingConfiguration()
         
-        //.arobjc 추가해줘야함. Bottle ar group폴더에
-        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Bottle", bundle: Bundle.main) else {
-            fatalError("Missing expected asset catalog resources.")
-        }
+//        .arobjc 추가해줘야함. Bottle ar group폴더에
+//        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Bottle", bundle: Bundle.main) else {
+//            fatalError("Missing expected asset catalog resources.")
+//        }
         
-        configuration.detectionObjects = referenceObjects
+//        configuration.detectionObjects = referenceObjects
         SCNView.session.run(configuration)
    
     }
@@ -67,6 +69,28 @@ extension ScanningViewController: ARSCNViewDelegate {
             SCNView.scene.rootNode.addChildNode(node)
             
         }
+    }
+    
+    
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        
+        switch camera.trackingState {
+            
+        case .notAvailable:
+            cameraLabel.text = "not Available"
+            
+        case .limited:
+            cameraLabel.text = "limited"
+            
+        case .normal:
+            cameraLabel.text = "normal"
+    
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard let frame = SCNView.session.currentFrame else { return }
+
     }
     
 }
