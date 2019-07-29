@@ -75,8 +75,7 @@ ARConfiguration
 ```
 if ARWorldTrackingConfiguration.isSupported {
    configuration = ARWorldTrackingConfiguration()
-}
-else  {
+} else {
    configuration = AROrientationTrackingConfiguration()
 } 
 ```
@@ -125,4 +124,4 @@ else  {
  
 #### 개발자 공식 문서 링크 
  > <https://developer.apple.com/kr/arkit/>
-
+ > <https://developer.apple.com/augmented-reality/arkit/>
